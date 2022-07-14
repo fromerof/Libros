@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="form-group">
+            <h1>New Book</h1>
+            <form action="/create_book" method="post">
+                <label for="dojo" >Title: </label>
+                <input type="text" name="title"><br>
+                <label for="num_pages">Number of pages: </label>
+                <input type="number" name="num_pages">
+                <input type="submit" value="Create">
+            </form>
+        </div>
+        <div>
+            <h1>All Books</h1>
+            {% for b in books %}
+                <a href="/showAllbooks/{{b.id}}"><p>{{b.title}}</p></a>
+            {% endfor %}
+            <a href="/authors">Home</a>
+        </div>
+    </body>
+</html>

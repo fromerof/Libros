@@ -1,0 +1,37 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h2>{{author.name}} favorites books</h2>
+
+        <table>
+            <thead>
+                <th>Title</th>
+                <th>Num pages</th>
+            </thead>
+            <tbody>
+                {%for book in author.favorite_books%}
+                <tr>
+                    <td>{{book.title}}</td>
+                    <td>{{book.num_pages}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        <form action="/join/book" method="post">
+            <h2>Add Author's Favorite</h2>
+            <input type="hidden" name="author_id" value="{{author.id}}"">
+            <label for="book_id">Book:</label>
+            <select name="book_id">
+                {%for book in unfavorited_books%}
+                <option value={{book.id}}>{{book.title}}</option>
+                {%endfor%}
+            <input type="submit" value="Add Book">
+        </form>
+        <a href="/authors">Back</a>
+    </body>
+</html>
